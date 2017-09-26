@@ -68,7 +68,7 @@ namespace MyLibrary.Tests
       g.roll(10);  // strike
       g.roll(3);   // spare
       g.roll(4);
-      
+     
       //act
       this.rollMany(16, 0);
       // assert
