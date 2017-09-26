@@ -47,8 +47,8 @@ namespace MyLibrary.Tests
       Assert.Equal(20, g.scoreGame());
     }
 
-  [Fact]
-    public void OnSpareReturnsAppropriateValue()
+    [Fact]
+    public void OneSpareReturnsAppropriateValue()
     {
       //arrange
       g.roll(5);
@@ -61,6 +61,30 @@ namespace MyLibrary.Tests
       Assert.Equal(16, g.scoreGame());
     }
 
+    [Fact]
+    public void OneStrikeReturnsAppropriateValue()
+    {
+      //arrange
+      g.roll(10);  // strike
+      g.roll(3);   // spare
+      g.roll(4);
+      
+      //act
+      this.rollMany(16, 0);
+      // assert
+      // 10 + 2*(3+4)
+      Assert.Equal(24, g.scoreGame());
+    }
+
+    [Fact]
+    public void AllStrikeReturnsAppropriateValue()
+    {
+      //arrange
+      rollMany(12, 10);
+      //act
+      // assert
+      Assert.Equal(300, g.scoreGame());
+    }
 
     private void rollMany(int rolls, int pins)
     {
